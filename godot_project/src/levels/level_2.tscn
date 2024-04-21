@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://o7ssglbdsh7y"]
+
+[ext_resource type="PackedScene" uid="uid://5qmn7q74r1bt" path="res://src/levels/base_level.tscn" id="1_wcbra"]
+[ext_resource type="PackedScene" uid="uid://bttg0nf3crxm8" path="res://src/world/platform.tscn" id="2_a71ta"]
+
+[node name="Level2" instance=ExtResource("1_wcbra")]
+
+[node name="Start" parent="world" index="0"]
+position = Vector2(304.444, 1193.33)
+
+[node name="End" parent="world" index="1"]
+position = Vector2(308.889, -365.556)
+
+[node name="Platform" parent="world" index="2"]
+position = Vector2(112.222, -5.55555)
+
+[node name="Platform2" parent="world" index="3" instance=ExtResource("2_a71ta")]
+position = Vector2(387.778, 260)
+
+[node name="Platform3" parent="world" index="4" instance=ExtResource("2_a71ta")]
+position = Vector2(31.1111, 456.667)
+
+[node name="Platform4" parent="world" index="5" instance=ExtResource("2_a71ta")]
+position = Vector2(408.889, 601.111)
+
+[node name="Platform5" parent="world" index="6" instance=ExtResource("2_a71ta")]
+position = Vector2(124.444, 843.333)
+
+[node name="Player" parent="." index="2"]
+position = Vector2(306.667, 1173.33)

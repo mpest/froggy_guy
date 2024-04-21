@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7bwsjxb641g1"]
+
+[ext_resource type="PackedScene" uid="uid://5qmn7q74r1bt" path="res://src/levels/base_level.tscn" id="1_eyvvb"]
+[ext_resource type="PackedScene" uid="uid://bttg0nf3crxm8" path="res://src/world/platform.tscn" id="2_niave"]
+
+[node name="Level3" instance=ExtResource("1_eyvvb")]
+
+[node name="End" parent="world" index="1"]
+position = Vector2(1786.67, 765.555)
+
+[node name="Platform" parent="world" index="2"]
+position = Vector2(486.667, 446.667)
+
+[node name="Platform2" parent="world" index="3" instance=ExtResource("2_niave")]
+position = Vector2(670, 213.333)
+
+[node name="Platform3" parent="world" index="4" instance=ExtResource("2_niave")]
+position = Vector2(982.222, 60)
+
+[node name="Platform4" parent="world" index="5" instance=ExtResource("2_niave")]
+position = Vector2(1213.33, 237.778)
+
+[node name="Platform5" parent="world" index="6" instance=ExtResource("2_niave")]
+position = Vector2(1461.11, 438.889)

@@ -1,0 +1,387 @@
+[gd_scene load_steps=37 format=3 uid="uid://c2y1gw1dabdsj"]
+
+[ext_resource type="Script" path="res://src/ui/main_menu.gd" id="1_tkoa7"]
+[ext_resource type="LabelSettings" uid="uid://oqy5ca8pacxg" path="res://assets/fonts/100_white.tres" id="1_yyn2l"]
+[ext_resource type="Texture2D" uid="uid://behrq3bou25m" path="res://assets/ui/rect_button_normal_squared.png" id="4_4ahsn"]
+[ext_resource type="LabelSettings" uid="uid://c2dkrctvcqvnq" path="res://assets/fonts/80_white.tres" id="4_8ra5a"]
+[ext_resource type="PackedScene" uid="uid://cwyypsmn1ys1k" path="res://src/levels/textured_button_for_ya.tscn" id="4_dt80w"]
+[ext_resource type="Texture2D" uid="uid://xsmg5mgwhnwt" path="res://assets/ui/rect_button_pressed_squared.png" id="5_jui4v"]
+[ext_resource type="Texture2D" uid="uid://c03700fignp5k" path="res://assets/ui/rect_panel_resized.png" id="5_rlbj0"]
+[ext_resource type="Texture2D" uid="uid://dsiqau3o8dmgj" path="res://assets/sprites/colored_castle.png" id="7_pl5ic"]
+[ext_resource type="AudioStream" uid="uid://vm3vergup8gs" path="res://assets/audio/birdsong.wav" id="8_l8pkx"]
+[ext_resource type="AudioStream" uid="uid://bo6ebj15gtylf" path="res://assets/audio/jazzyfrenchy.mp3" id="9_rl8yc"]
+[ext_resource type="Texture2D" uid="uid://cvbctw2q873e5" path="res://assets/ui/rect_button_focused_squared.png" id="9_uqx1m"]
+[ext_resource type="Texture2D" uid="uid://bpv52fn3d5412" path="res://assets/ui/joystick_movement.png" id="9_vl54a"]
+[ext_resource type="Texture2D" uid="uid://dtt3yd2ru5m0q" path="res://assets/ui/arrow.png" id="10_f5y5v"]
+[ext_resource type="Texture2D" uid="uid://cymq14oml15r" path="res://assets/ui/button_a.png" id="10_hhtr5"]
+[ext_resource type="Texture2D" uid="uid://cwsudjoslxks8" path="res://assets/sprites/jump.png" id="11_tcvb6"]
+[ext_resource type="Texture2D" uid="uid://7a7tnjqs1auk" path="res://assets/sprites/arrow_point.png" id="12_87kq3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fjia"]
+bg_color = Color(0.266667, 0.67451, 0.643137, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bvjw"]
+atlas = ExtResource("9_vl54a")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ei58"]
+atlas = ExtResource("9_vl54a")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtwf4"]
+atlas = ExtResource("9_vl54a")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eyxh"]
+atlas = ExtResource("9_vl54a")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0g5mp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bvjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ei58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtwf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eyxh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwe2x"]
+atlas = ExtResource("10_hhtr5")
+region = Rect2(0, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8lv6"]
+atlas = ExtResource("10_hhtr5")
+region = Rect2(12, 0, 12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqj8e"]
+atlas = ExtResource("10_hhtr5")
+region = Rect2(24, 0, 12, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gd1su"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwe2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8lv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqj8e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmtb7"]
+atlas = ExtResource("11_tcvb6")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_schgw"]
+atlas = ExtResource("11_tcvb6")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1urb"]
+atlas = ExtResource("11_tcvb6")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dclxj"]
+atlas = ExtResource("11_tcvb6")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_724ql"]
+atlas = ExtResource("11_tcvb6")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw507"]
+atlas = ExtResource("11_tcvb6")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmgyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmtb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_schgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1urb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dclxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_724ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw507")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_gb8gu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4vbbq"]
+resource_name = "standard"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D3:rotation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-1.5708, 1.5708, 0.0, 3.14159, 1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxfck"]
+_data = {
+"RESET": SubResource("Animation_gb8gu"),
+"standard": SubResource("Animation_4vbbq")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tkoa7")
+
+[node name="BgRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -112.5
+offset_right = 212.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_pl5ic")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Title" type="Label" parent="MC"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Froggy
+Centaurus"
+label_settings = ExtResource("1_yyn2l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="PlayButton" parent="MC/VB" instance=ExtResource("4_dt80w")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text_shown = "Play!"
+
+[node name="TutorialButton" parent="MC/VB" instance=ExtResource("4_dt80w")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text_shown = "Tutorial"
+
+[node name="LevelTexture" type="TextureRect" parent="MC/VB"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+texture = ExtResource("5_rlbj0")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MC/VB/LevelTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level"
+label_settings = ExtResource("4_8ra5a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HB" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftButton" type="TextureButton" parent="MC/VB/HB"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_4ahsn")
+texture_pressed = ExtResource("5_jui4v")
+texture_focused = ExtResource("9_uqx1m")
+stretch_mode = 4
+
+[node name="LevelTexture" type="TextureRect" parent="MC/VB/HB"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+texture = ExtResource("5_rlbj0")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MC/VB/HB/LevelTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = ExtResource("4_8ra5a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButton" type="TextureButton" parent="MC/VB/HB"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_4ahsn")
+texture_pressed = ExtResource("5_jui4v")
+texture_focused = ExtResource("9_uqx1m")
+stretch_mode = 4
+flip_h = true
+
+[node name="ExitButton" parent="MC/VB" instance=ExtResource("4_dt80w")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text_shown = "Exit"
+
+[node name="TutorialPanel" type="Panel" parent="MC"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3fjia")
+
+[node name="MC" type="MarginContainer" parent="MC/TutorialPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MC/TutorialPanel/MC"]
+position = Vector2(40, 130)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_0g5mp")
+autoplay = "default"
+frame_progress = 0.232221
+centered = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="MC/TutorialPanel/MC"]
+position = Vector2(60, 360)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_gd1su")
+autoplay = "default"
+frame_progress = 0.22015
+centered = false
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="MC/TutorialPanel/MC"]
+position = Vector2(326, 197)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_gmgyd")
+autoplay = "default"
+frame_progress = 0.324754
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="MC/TutorialPanel/MC"]
+position = Vector2(250, 209)
+scale = Vector2(5, 5)
+texture = ExtResource("10_f5y5v")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MC/TutorialPanel/MC"]
+position = Vector2(249, 426)
+scale = Vector2(5, 5)
+texture = ExtResource("10_f5y5v")
+
+[node name="Sprite2D3" type="Sprite2D" parent="MC/TutorialPanel/MC"]
+position = Vector2(400, 198.466)
+scale = Vector2(5, 5)
+texture = ExtResource("12_87kq3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MC/TutorialPanel/MC"]
+libraries = {
+"": SubResource("AnimationLibrary_fxfck")
+}
+autoplay = "standard"
+
+[node name="QuitButton" parent="MC/TutorialPanel/MC" instance=ExtResource("4_dt80w")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 8
+text_shown = "OK!"
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_rl8yc")
+
+[node name="BirdsSongPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_l8pkx")
+autoplay = true
+
+[node name="EffectsPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="button_up" from="MC/VB/PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="button_up" from="MC/VB/TutorialButton" to="." method="_on_tutorial_button_button_up"]
+[connection signal="button_down" from="MC/VB/HB/LeftButton" to="." method="_on_left_button_button_down"]
+[connection signal="button_up" from="MC/VB/HB/LeftButton" to="." method="_on_left_button_button_up"]
+[connection signal="button_down" from="MC/VB/HB/RightButton" to="." method="_on_right_button_button_down"]
+[connection signal="button_up" from="MC/VB/HB/RightButton" to="." method="_on_right_button_button_up"]
+[connection signal="button_up" from="MC/VB/ExitButton" to="." method="_on_exit_button_button_up"]
+[connection signal="button_up" from="MC/TutorialPanel/MC/QuitButton" to="." method="_on_quit_button_button_up"]

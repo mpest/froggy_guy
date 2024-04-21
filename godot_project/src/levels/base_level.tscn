@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://5qmn7q74r1bt"]
+
+[ext_resource type="Script" path="res://src/levels/base_level.gd" id="1_p6457"]
+[ext_resource type="PackedScene" uid="uid://b14nmvpda8fd7" path="res://src/world/start.tscn" id="2_k72nh"]
+[ext_resource type="PackedScene" uid="uid://diqk4f40ippse" path="res://src/player/player.tscn" id="2_uwm5l"]
+[ext_resource type="PackedScene" uid="uid://dj0w53ttbv57e" path="res://src/world/end.tscn" id="3_ivwhy"]
+[ext_resource type="PackedScene" uid="uid://bttg0nf3crxm8" path="res://src/world/platform.tscn" id="5_x1ieo"]
+[ext_resource type="PackedScene" uid="uid://bo8xlu07bbxd4" path="res://src/ui/ingame_ui.tscn" id="6_gpgks"]
+[ext_resource type="Texture2D" uid="uid://lonc2tpgaijy" path="res://assets/ui/square_button_normal_resized.png" id="7_fmeat"]
+[ext_resource type="AudioStream" uid="uid://bo6ebj15gtylf" path="res://assets/audio/jazzyfrenchy.mp3" id="7_sl3a7"]
+[ext_resource type="Texture2D" uid="uid://bbbab4ej4fsry" path="res://assets/ui/square_button_pressed_resized.png" id="8_sxebw"]
+[ext_resource type="Texture2D" uid="uid://d4cc8fotl04eq" path="res://assets/ui/sound_on.png" id="9_x7yko"]
+
+[node name="BaseLevel" type="Node2D"]
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_p6457")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 1, 1)
+
+[node name="world" type="Node2D" parent="."]
+
+[node name="Start" parent="world" instance=ExtResource("2_k72nh")]
+position = Vector2(296, 769)
+
+[node name="End" parent="world" instance=ExtResource("3_ivwhy")]
+position = Vector2(307, 13)
+
+[node name="Platform" parent="world" instance=ExtResource("5_x1ieo")]
+position = Vector2(272, 364)
+
+[node name="Player" parent="." instance=ExtResource("2_uwm5l")]
+position = Vector2(271, 741)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MC" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SoundButton" type="TextureButton" parent="CanvasLayer/MC"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture_normal = ExtResource("7_fmeat")
+texture_pressed = ExtResource("8_sxebw")
+
+[node name="MC" type="MarginContainer" parent="CanvasLayer/MC/SoundButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MC/SoundButton/MC"]
+layout_mode = 2
+texture = ExtResource("9_x7yko")
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("6_gpgks")]
+visible = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_sl3a7")
+
+[connection signal="button_up" from="CanvasLayer/MC/SoundButton" to="." method="_on_sound_button_button_up"]

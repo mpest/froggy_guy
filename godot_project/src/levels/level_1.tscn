@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5427j6buy7gp"]
+
+[ext_resource type="PackedScene" uid="uid://5qmn7q74r1bt" path="res://src/levels/base_level.tscn" id="1_vya0x"]
+
+[node name="Level1" instance=ExtResource("1_vya0x")]
+
+[node name="Platform" parent="world" index="2"]
+position = Vector2(272.222, 402.222)

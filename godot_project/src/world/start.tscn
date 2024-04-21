@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b14nmvpda8fd7"]
+
+[ext_resource type="PackedScene" uid="uid://bttg0nf3crxm8" path="res://src/world/platform.tscn" id="1_vn8x8"]
+[ext_resource type="Texture2D" uid="uid://b8fm420okugtv" path="res://assets/sprites/start.png" id="2_etjj3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yv5fw"]
+size = Vector2(150.2, 36.2)
+
+[node name="Start" instance=ExtResource("1_vn8x8")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_etjj3")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.100003, -5.1)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_yv5fw")

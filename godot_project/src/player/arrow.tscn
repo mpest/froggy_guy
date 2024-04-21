@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://w5m6gf80e85d"]
+
+[ext_resource type="Script" path="res://src/player/arrow.gd" id="1_ko2j8"]
+[ext_resource type="Texture2D" uid="uid://bu6omcliwd2b2" path="res://assets/sprites/arrow_wood.png" id="1_s0vhe"]
+[ext_resource type="Texture2D" uid="uid://7a7tnjqs1auk" path="res://assets/sprites/arrow_point.png" id="2_fw12u"]
+[ext_resource type="Texture2D" uid="uid://ca0fqm6ahtfnx" path="res://assets/sprites/marker_sprite.png" id="4_n4dxm"]
+
+[node name="Arrow" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_ko2j8")
+
+[node name="ArrowLine" type="Sprite2D" parent="."]
+texture = ExtResource("1_s0vhe")
+offset = Vector2(8, 0)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(17, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+texture = ExtResource("4_n4dxm")
+
+[node name="ArrowPointer" type="Sprite2D" parent="Marker2D"]
+position = Vector2(4.61936e-07, 0)
+texture = ExtResource("2_fw12u")
+offset = Vector2(-7.2, 0)

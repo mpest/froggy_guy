@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj0w53ttbv57e"]
+
+[ext_resource type="PackedScene" uid="uid://bttg0nf3crxm8" path="res://src/world/platform.tscn" id="1_l8sax"]
+[ext_resource type="Script" path="res://src/world/end.gd" id="2_2t46o"]
+[ext_resource type="Texture2D" uid="uid://co010nwoh05f1" path="res://assets/sprites/end.png" id="3_o88ir"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynvdb"]
+size = Vector2(146.2, 37.4)
+
+[node name="End" instance=ExtResource("1_l8sax")]
+script = ExtResource("2_2t46o")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_o88ir")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.0999954, -4.5)
+shape = SubResource("RectangleShape2D_ynvdb")

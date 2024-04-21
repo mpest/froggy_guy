@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://oqy5ca8pacxg"]
+
+[ext_resource type="FontFile" uid="uid://bkfbr3jn1rfa8" path="res://assets/fonts/CompassPro.ttf" id="1_5w2ep"]
+
+[resource]
+font = ExtResource("1_5w2ep")
+font_size = 100
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwyypsmn1ys1k"]
+
+[ext_resource type="Texture2D" uid="uid://c2dc1dsvolp81" path="res://assets/ui/rect_button_normal_resized.png" id="1_bithd"]
+[ext_resource type="Texture2D" uid="uid://dyr8hso2i6vuo" path="res://assets/ui/rect_button_pressed_resized.png" id="2_fl18v"]
+[ext_resource type="LabelSettings" uid="uid://c2dkrctvcqvnq" path="res://assets/fonts/80_white.tres" id="3_0fbss"]
+[ext_resource type="Texture2D" uid="uid://bvl5nlqf2kobp" path="res://assets/ui/rect_button_focused_resized.png" id="3_856gb"]
+[ext_resource type="Script" path="res://src/levels/textured_button_for_ya.gd" id="3_c5bju"]
+[ext_resource type="AudioStream" uid="uid://4l82as3wfgjp" path="res://assets/audio/kick_wood.ogg" id="4_8kdt2"]
+
+[node name="TexturedButtonForYa" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_bithd")
+texture_pressed = ExtResource("2_fl18v")
+texture_focused = ExtResource("3_856gb")
+stretch_mode = 5
+script = ExtResource("3_c5bju")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8kdt2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "asd"
+label_settings = ExtResource("3_0fbss")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
