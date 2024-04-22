@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu4jtoc26jnys"]
+
+[ext_resource type="PackedScene" uid="uid://5qmn7q74r1bt" path="res://src/levels/base_level.tscn" id="1_l5g13"]
+[ext_resource type="PackedScene" uid="uid://bttg0nf3crxm8" path="res://src/world/platform.tscn" id="2_eu83t"]
+
+[node name="Level4" instance=ExtResource("1_l5g13")]
+
+[node name="End" parent="world" index="1"]
+position = Vector2(322.222, -1285.56)
+
+[node name="Platform" parent="world" index="2"]
+position = Vector2(180, 272.222)
+
+[node name="Platform11" parent="world" index="3" instance=ExtResource("2_eu83t")]
+position = Vector2(285.556, 466.667)
+
+[node name="Platform2" parent="world" index="4" instance=ExtResource("2_eu83t")]
+position = Vector2(410, 40)
+
+[node name="Platform3" parent="world" index="5" instance=ExtResource("2_eu83t")]
+position = Vector2(731.111, -176.667)
+
+[node name="Platform4" parent="world" index="6" instance=ExtResource("2_eu83t")]
+position = Vector2(1000, -435.556)
+
+[node name="Platform5" parent="world" index="7" instance=ExtResource("2_eu83t")]
+position = Vector2(481.111, -466.667)
+
+[node name="Platform6" parent="world" index="8" instance=ExtResource("2_eu83t")]
+position = Vector2(244.444, -694.444)
+
+[node name="Platform7" parent="world" index="9" instance=ExtResource("2_eu83t")]
+position = Vector2(76.6666, -952.222)
+
+[node name="Platform8" parent="world" index="10" instance=ExtResource("2_eu83t")]
+position = Vector2(1250, -680)
+
+[node name="Platform9" parent="world" index="11" instance=ExtResource("2_eu83t")]
+position = Vector2(1500, -907.778)
+
+[node name="Platform10" parent="world" index="12" instance=ExtResource("2_eu83t")]
+position = Vector2(1672.22, -1130)

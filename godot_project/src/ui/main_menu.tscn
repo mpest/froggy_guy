@@ -366,6 +366,10 @@ autoplay = "standard"
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 8
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 text_shown = "OK!"
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -378,10 +382,11 @@ autoplay = true
 [node name="EffectsPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="button_up" from="MC/VB/PlayButton" to="." method="_on_play_button_button_up"]
-[connection signal="button_up" from="MC/VB/TutorialButton" to="." method="_on_tutorial_button_button_up"]
+[connection signal="button_down" from="MC/VB/TutorialButton" to="." method="_on_tutorial_button_button_down"]
+[connection signal="pressed" from="MC/VB/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="button_down" from="MC/VB/HB/LeftButton" to="." method="_on_left_button_button_down"]
 [connection signal="button_up" from="MC/VB/HB/LeftButton" to="." method="_on_left_button_button_up"]
 [connection signal="button_down" from="MC/VB/HB/RightButton" to="." method="_on_right_button_button_down"]
 [connection signal="button_up" from="MC/VB/HB/RightButton" to="." method="_on_right_button_button_up"]
 [connection signal="button_up" from="MC/VB/ExitButton" to="." method="_on_exit_button_button_up"]
-[connection signal="button_up" from="MC/TutorialPanel/MC/QuitButton" to="." method="_on_quit_button_button_up"]
+[connection signal="pressed" from="MC/TutorialPanel/MC/QuitButton" to="." method="_on_quit_button_pressed"]

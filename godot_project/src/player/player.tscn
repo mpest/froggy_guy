@@ -1,9 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://diqk4f40ippse"]
+[gd_scene load_steps=33 format=3 uid="uid://diqk4f40ippse"]
 
 [ext_resource type="Texture2D" uid="uid://clg43y64e46yl" path="res://assets/sprites/idle-trim.png" id="1_pvs5e"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_tegg6"]
 [ext_resource type="Texture2D" uid="uid://cwsudjoslxks8" path="res://assets/sprites/jump.png" id="2_cjwpk"]
 [ext_resource type="PackedScene" uid="uid://w5m6gf80e85d" path="res://src/player/arrow.tscn" id="3_p1b0k"]
+[ext_resource type="Texture2D" uid="uid://5tlk6sadepk5" path="res://assets/effects/void.png" id="5_kdcr7"]
+[ext_resource type="Texture2D" uid="uid://dn5lbe7hh7pb8" path="res://assets/effects/landing.png" id="5_twadd"]
+[ext_resource type="Texture2D" uid="uid://dmnpjc384qvy3" path="res://assets/effects/splash.png" id="6_dkd4t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y4ndw"]
 
@@ -99,6 +102,101 @@ animations = [{
 radius = 2.8
 height = 9.2
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t17m"]
+atlas = ExtResource("5_kdcr7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov4hq"]
+atlas = ExtResource("5_twadd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6go4h"]
+atlas = ExtResource("5_twadd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d70bk"]
+atlas = ExtResource("5_twadd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pqh4"]
+atlas = ExtResource("5_twadd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w8cq"]
+atlas = ExtResource("5_kdcr7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uwtg"]
+atlas = ExtResource("6_dkd4t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li3j7"]
+atlas = ExtResource("6_dkd4t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uak3k"]
+atlas = ExtResource("6_dkd4t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lve6i"]
+atlas = ExtResource("6_dkd4t")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w28y0"]
+atlas = ExtResource("6_dkd4t")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ofj14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t17m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov4hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6go4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d70bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pqh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w8cq")
+}],
+"loop": false,
+"name": &"landed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uwtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li3j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uak3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lve6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w28y0")
+}],
+"loop": false,
+"name": &"splash",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_y4ndw")
 scale = Vector2(5, 5)
@@ -122,3 +220,16 @@ position_smoothing_enabled = true
 position = Vector2(-0.6, 2.8)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pijia")
+
+[node name="Effects" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_ofj14")
+animation = &"landed"
+autoplay = "default"
+
+[node name="RespawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

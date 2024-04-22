@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://5qmn7q74r1bt"]
+[gd_scene load_steps=14 format=3 uid="uid://5qmn7q74r1bt"]
 
 [ext_resource type="Script" path="res://src/levels/base_level.gd" id="1_p6457"]
 [ext_resource type="PackedScene" uid="uid://b14nmvpda8fd7" path="res://src/world/start.tscn" id="2_k72nh"]
 [ext_resource type="PackedScene" uid="uid://diqk4f40ippse" path="res://src/player/player.tscn" id="2_uwm5l"]
+[ext_resource type="Shader" path="res://src/levels/reflective_water.gdshader" id="2_waq5q"]
 [ext_resource type="PackedScene" uid="uid://dj0w53ttbv57e" path="res://src/world/end.tscn" id="3_ivwhy"]
 [ext_resource type="PackedScene" uid="uid://bttg0nf3crxm8" path="res://src/world/platform.tscn" id="5_x1ieo"]
 [ext_resource type="PackedScene" uid="uid://bo8xlu07bbxd4" path="res://src/ui/ingame_ui.tscn" id="6_gpgks"]
@@ -10,21 +11,27 @@
 [ext_resource type="AudioStream" uid="uid://bo6ebj15gtylf" path="res://assets/audio/jazzyfrenchy.mp3" id="7_sl3a7"]
 [ext_resource type="Texture2D" uid="uid://bbbab4ej4fsry" path="res://assets/ui/square_button_pressed_resized.png" id="8_sxebw"]
 [ext_resource type="Texture2D" uid="uid://d4cc8fotl04eq" path="res://assets/ui/sound_on.png" id="9_x7yko"]
+[ext_resource type="Texture2D" uid="uid://dqvpvl5p4mxcq" path="res://assets/effects/water_tex.png" id="12_uvfmt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_58fyy"]
+shader = ExtResource("2_waq5q")
+shader_parameter/WATER_COL = Color(0.176471, 0.635294, 0.85098, 1)
+shader_parameter/WATER2_COL = Color(0.0588235, 0.529412, 0.776471, 1)
+shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
 
 [node name="BaseLevel" type="Node2D"]
 scale = Vector2(0.9, 0.9)
 script = ExtResource("1_p6457")
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 1, 1, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_58fyy")
+position = Vector2(-2000, -2000)
+scale = Vector2(300, 300)
+texture = ExtResource("12_uvfmt")
+centered = false
 
 [node name="world" type="Node2D" parent="."]
 
@@ -82,5 +89,6 @@ visible = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_sl3a7")
+autoplay = true
 
 [connection signal="button_up" from="CanvasLayer/MC/SoundButton" to="." method="_on_sound_button_button_up"]

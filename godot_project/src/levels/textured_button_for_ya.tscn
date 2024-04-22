@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://src/levels/textured_button_for_ya.gd" id="3_c5bju"]
 [ext_resource type="AudioStream" uid="uid://4l82as3wfgjp" path="res://assets/audio/kick_wood.ogg" id="4_8kdt2"]
 
-[node name="TexturedButtonForYa" type="TextureButton"]
+[node name="TexturedButtonForYa" type="TextureButton" groups=["buttons"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

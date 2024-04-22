@@ -193,6 +193,9 @@ libraries = {
 "": SubResource("AnimationLibrary_57lfs")
 }
 
+[node name="EffectsPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="button_up" from="GameOver/Panel/MC/VB/HB/ReplayButton" to="." method="_on_replay_button_button_up"]
 [connection signal="button_up" from="GameOver/Panel/MC/VB/HB/NextButton" to="." method="_on_next_button_button_up"]
 [connection signal="visibility_changed" from="GameOver/Panel/MC/VB/HB/NextButton" to="." method="_on_next_button_visibility_changed"]

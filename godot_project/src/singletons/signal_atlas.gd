@@ -5,3 +5,4 @@ extends Node
 ############################
 signal on_player_launched(target_pos: Vector2)
 signal on_player_grounded
+signal on_player_respawn

@@ -16,11 +16,14 @@ var _target_point: Vector2 = Vector2.ZERO
 var _player_starting_pos: Vector2 = Vector2.ZERO
 var _jumping = false
 var _player_won = false
+var _fallen = false
+var _landed = true
 ############################
 ## INITIALIZATION
 ############################
 func _ready():
 	SignalAtlas.on_player_launched.connect(_on_player_launched)
+	SignalAtlas.on_player_respawn.connect(_on_player_respawn)
 
 ############################
 ## PROCESS
@@ -28,15 +31,19 @@ func _ready():
 func _process(_delta):
 	if _jumping:
 		if _player_reached_destiny():
-			player.stop_jump()
 			if not _check_player_grounded():
-				_fall()
+				if not _fallen:
+					_fall()
+					_fallen = true
 			elif _player_won:
 				ui.show()
 				player.set_process_input(false)
 				player.set_physics_process(false)
 			else:
-				SignalAtlas.on_player_grounded.emit()
+				if not _landed:
+					_landed = true
+					player.land()
+					SignalAtlas.on_player_grounded.emit()
 
 ############################
 ## INTERFACE
@@ -64,8 +71,6 @@ func _check_player_grounded():
 
 func _fall():
 	player.fall()
-	player.global_position = _player_starting_pos
-	SignalAtlas.on_player_grounded.emit()
 
 ############################
 ## SIGNAL HANDLING
@@ -73,6 +78,7 @@ func _fall():
 func _on_player_launched(target_point):
 	_player_starting_pos = player.global_position
 	_target_point = target_point
+	_landed = false
 	_jumping = true
 
 func _on_sound_button_button_up():
@@ -84,3 +90,8 @@ func _on_sound_button_button_up():
 		sound_tex_rect.texture = SOUND_ON
 		_sound_on = true
 		music_player.play()
+
+func _on_player_respawn():
+	_fallen = false
+	player.global_position = _player_starting_pos
+	SignalAtlas.on_player_grounded.emit()

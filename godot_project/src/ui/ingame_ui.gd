@@ -5,6 +5,7 @@ extends Control
 @onready var panel_2 = $GameOver/Panel2
 @onready var animation_player = $AnimationPlayer
 @onready var next_button = $GameOver/Panel/MC/VB/HB/NextButton
+@onready var effects_player = $EffectsPlayer
 
 ############################
 ## INITIALIZATION
@@ -42,3 +43,7 @@ func _on_next_button_button_up():
 
 func _on_next_button_visibility_changed():
 	next_button.grab_focus()
+
+func _on_visibility_changed():
+	if visible:
+		SoundManager.play_sound(effects_player, SoundManager.CHEER)

@@ -6,6 +6,8 @@ extends Control
 @onready var level_label = $MC/VB/HB/LevelTexture/Label
 @onready var tutorial_panel = $MC/TutorialPanel
 @onready var play_button = $MC/VB/PlayButton
+@onready var quit_button = $MC/TutorialPanel/MC/QuitButton
+@onready var vb = $MC/VB
 
 ############################
 ## INITIALIZATION
@@ -66,8 +68,10 @@ func _on_exit_button_button_up():
 func _on_play_button_button_up():
 	Director.load_level(int(level_label.text))
 
-func _on_quit_button_button_up():
+func _on_quit_button_pressed():
 	tutorial_panel.hide()
+	play_button.grab_focus()
 
-func _on_tutorial_button_button_up():
+func _on_tutorial_button_pressed():
 	tutorial_panel.show()
+	quit_button.grab_focus()

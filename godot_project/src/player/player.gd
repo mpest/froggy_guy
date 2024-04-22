@@ -7,6 +7,9 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var arrow = $Arrow
+@onready var effects = $Effects
+@onready var respawn_timer = $RespawnTimer
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 const VIBRATING_SHADER = preload("res://assets/shaders/vibrating.gdshader")
 
@@ -38,14 +41,20 @@ func _physics_process(_delta):
 ############################
 ## INTERFACE
 ############################
-func stop_jump():
+func land():
 	animated_sprite_2d.play('idle')
+	effects.play('landed')
+	SoundManager.play_sound(audio_stream_player_2d, SoundManager.LANDING)
 	_jumping = false
 	velocity = Vector2.ZERO
 
 func fall():
 	animated_sprite_2d.play('idle')
-	pass
+	animated_sprite_2d.hide()
+	effects.play('splash')
+	SoundManager.play_sound(audio_stream_player_2d, SoundManager.SPLASH)
+	respawn_timer.start()
+	_jumping = false
 
 ############################
 ## INTERNAL UTILITIES
@@ -65,6 +74,11 @@ func _play_once():
 		material.set_shader_parameter('amplitude', 0.002)
 		material.set_shader_parameter('frequency', 90)
 		_played_once = true
+
 ############################
 ## SIGNAL HANDLING
 ############################
+func _on_respawn_timer_timeout():
+	effects.play('default')
+	animated_sprite_2d.show()
+	SignalAtlas.on_player_respawn.emit()

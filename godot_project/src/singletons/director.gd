@@ -6,6 +6,8 @@ const TAG_LEVEL_DICT: Dictionary = {
 	1 : preload("res://src/levels/level_1.tscn"),
 	2 : preload("res://src/levels/level_2.tscn"),
 	3 : preload("res://src/levels/level_3.tscn"),
+	4 : preload("res://src/levels/level_4.tscn"),
+	5 : preload("res://src/levels/level_5.tscn"),
 }
 const MAIN_MENU = preload("res://src/ui/main_menu.tscn")
 
