@@ -17,6 +17,7 @@ offset = Vector2(8, 0)
 position = Vector2(17, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+visible = false
 texture = ExtResource("4_n4dxm")
 
 [node name="ArrowPointer" type="Sprite2D" parent="Marker2D"]

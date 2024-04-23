@@ -82,12 +82,22 @@ func _reset_transformations():
 	marker_2d.position = Vector2(17, 0)
 
 func _clamp_marker_pos():
-	var vp_size = get_viewport_rect().size
-	var vp_corrected_size = vp_size / PI ## Pero POR QUÉ PASA ESTO XDIOS
-	var clamp_x = Vector2(position.x - vp_corrected_size.x / 2, position.x + vp_corrected_size.x / 2)
-	var clamp_y = Vector2(position.y - vp_corrected_size.y / 2, position.y + vp_corrected_size.y / 2)
-	marker_2d.position.x = clampf(marker_2d.position.x, clamp_x.x, clamp_x.y)
-	marker_2d.position.y = clampf(marker_2d.position.y, clamp_y.x, clamp_y.y)
+	var current_camera = get_viewport().get_camera_2d()
+	var camera_rect = current_camera.get_viewport_rect()
+	var clamp_rect = Rect2i(current_camera.global_position - (camera_rect.size/2), \
+							camera_rect.size)
+	marker_2d.global_position.x = clampf(marker_2d.global_position.x, clamp_rect.position.x,\
+									clamp_rect.position.x + clamp_rect.size.x)
+	marker_2d.global_position.y = clampf(marker_2d.global_position.y, clamp_rect.position.y,\
+									clamp_rect.position.y + clamp_rect.size.y)
+
+	## ESTO QUEDA AQUÍ COMO MUESTRA DE MI VERGÜENZA
+	#var vp_size = get_viewport_rect().size
+	#var vp_corrected_size = vp_size / PI ## Pero POR QUÉ PASA ESTO XDIOS
+	#var clamp_x = Vector2(position.x - vp_corrected_size.x / 2, position.x + vp_corrected_size.x / 2)
+	#var clamp_y = Vector2(position.y - vp_corrected_size.y / 2, position.y + vp_corrected_size.y / 2)
+	#marker_2d.position.x = clampf(marker_2d.position.x, clamp_x.x, clamp_x.y)
+	#marker_2d.position.y = clampf(marker_2d.position.y, clamp_y.x, clamp_y.y)
 ############################
 ## SIGNAL HANDLING
 ############################
